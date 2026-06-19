@@ -22,8 +22,8 @@ $(AXI_VGA_ROOT)/sw/include:
 $(AXI_VGA_ROOT)/src/axi_vga_reg_top.sv $(AXI_VGA_ROOT)/src/axi_vga_reg_pkg.sv: $(AXI_VGA_ROOT)/data/axi_vga.hjson
 	$(REGTOOL) -r $< --outdir $(AXI_VGA_ROOT)/src/
 
-$(AXI_VGA_ROOT)/sw/include/axi_vga_regs.h: $(AXI_VGA_ROOT)/data/axi_vga.hjson | $(AXI_VGA_ROOT)/sw/include
-	$(REGTOOL) --cdefines $< --outfile $@
+$(AXI_VGA_ROOT)/sw/include/axi_vga_regs.h: $(AXI_VGA_ROOT)/data/axi_vga.rdl | $(AXI_VGA_ROOT)/sw/include
+	peakrdl c-header $< -o $@
 
 _axi_vga: $(AXI_VGA_ROOT)/src/axi_vga_reg_top.sv
 _axi_vga: $(AXI_VGA_ROOT)/src/axi_vga_reg_top.sv
