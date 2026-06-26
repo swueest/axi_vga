@@ -147,6 +147,15 @@ addrmap axi_vga {
         } burst_len[7:0] = 0x0;
     };
 
+    reg burst_split_len {
+        field {
+            name = "burst_len";
+            desc = "Maximum number of beats in each burst requested from AXI";
+            sw   = rw;
+            hw   = r;
+        } burst_len[7:0] = 0x0;
+    };
+
     control               control               @0x00;
     clk_div               clk_div               @0x04;
     hori_visible_size     hori_visible_size     @0x08;
@@ -161,6 +170,7 @@ addrmap axi_vga {
     start_addr_high       start_addr_high       @0x2C;
     frame_size            frame_size            @0x30;
     burst_len             burst_len             @0x34;
+    burst_split_len       burst_split_len       @0x38;
 };
 
 `endif // AXI_VGA_RDL

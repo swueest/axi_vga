@@ -102,6 +102,12 @@ extern "C" {
 #define AXI_VGA__BURST_LEN__BURST_LEN_bw 8
 #define AXI_VGA__BURST_LEN__BURST_LEN_reset 0x0
 
+// reg - axi_vga::burst_split_len
+#define AXI_VGA__BURST_SPLIT_LEN__BURST_LEN_bm 0xff
+#define AXI_VGA__BURST_SPLIT_LEN__BURST_LEN_bp 0
+#define AXI_VGA__BURST_SPLIT_LEN__BURST_LEN_bw 8
+#define AXI_VGA__BURST_SPLIT_LEN__BURST_LEN_reset 0x0
+
 // addrmap - axi_vga
 typedef struct __attribute__ ((__packed__)) {
     uint32_t control;
@@ -118,10 +124,11 @@ typedef struct __attribute__ ((__packed__)) {
     uint32_t start_addr_high;
     uint32_t frame_size;
     uint32_t burst_len;
+    uint32_t burst_split_len;
 } axi_vga_t;
 
 
-static_assert(sizeof(axi_vga_t) == 0x38, "Packing error");
+static_assert(sizeof(axi_vga_t) == 0x3c, "Packing error");
 
 #ifdef __cplusplus
 }
